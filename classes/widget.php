@@ -21,12 +21,12 @@ class Advanced_Random_Posts_Widget extends WP_Widget {
 		$widget_options = array(
 			'classname'   => 'arpw-widget-random',
 			'description' => __( 'An advanced widget that gives you total control over the output of the random posts.', 'arpw' )
-		);
+			);
 
 		$control_ops = array(
 			'width'  => 700,
 			'height' => 350,
-		);
+			);
 
 		// Create the widget.
 		$this->WP_Widget(
@@ -34,7 +34,7 @@ class Advanced_Random_Posts_Widget extends WP_Widget {
 			__( 'Random Posts', 'arpw' ), // $this->name
 			$widget_options,              // $this->widget_options
 			$control_ops                  // $this->control_options
-		);
+			);
 
 	}
 
@@ -93,6 +93,8 @@ class Advanced_Random_Posts_Widget extends WP_Widget {
 		$instance['thumbnail_custom']  = isset( $new_instance['thumbnail_custom'] ) ? (bool) $new_instance['thumbnail_custom'] : false;
 		$instance['thumbnail_width']   = (int) $new_instance['thumbnail_width'];
 		$instance['thumbnail_height']  = (int) $new_instance['thumbnail_height'];
+
+		$instance['content']           = isset( $new_instance['content'] ) ? (bool) $new_instance['content'] : false;
 
 		$instance['excerpt']           = isset( $new_instance['excerpt'] ) ? (bool) $new_instance['excerpt'] : false;
 		$instance['excerpt_length']    = (int) $new_instance['excerpt_length'];

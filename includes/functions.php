@@ -37,6 +37,7 @@ function arpw_get_default_args() {
 		'thumbnail_width'   => '',
 		'thumbnail_height'  => '',
 
+		'content'			=> false,
 		'excerpt'           => false,
 		'excerpt_length'    => 10,
 		'date'              => false,
@@ -157,6 +158,10 @@ function arpw_get_random_posts( $args = array() ) {
 
 						if ( $args['excerpt'] ) :
 							$html .= '<div class="arpw-summary">' . wp_trim_words( apply_filters( 'arpw_excerpt', get_the_excerpt() ), $args['excerpt_length'], ' &hellip;' ) . '</div>';
+						endif;
+
+						if ( $args['content'] ) :
+							$html .= '<div class="arpw-content">' . apply_filters( 'arpw_content', get_the_content() ) . '</div>';
 						endif;
 
 					$html .= '</li>';
