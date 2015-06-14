@@ -101,7 +101,11 @@
 			<?php _e( 'Limit to Category', 'arpw' ); ?>
 		</label>
 		<ul>
-			<?php foreach ( get_terms( 'category' ) as $category ) : ?>
+			<?php 
+			$cat_args = array( 'number' => 9 );
+			$categories = get_terms( 'category', apply_filters('arpw_get_cat_args', $cat_args ) );
+			foreach ( $categories as $category ) : ?>
+
 				<li>
 					<input type="checkbox" value="<?php echo (int) $category->term_id; ?>" id="<?php echo $this->get_field_id( 'cat' ) . '-' . (int) $category->term_id; ?>" name="<?php echo $this->get_field_name( 'cat' ); ?>[]" <?php checked( is_array( $instance['cat'] ) && in_array( $category->term_id, $instance['cat'] ) ); ?> />
 					<label for="<?php echo $this->get_field_id( 'cat' ) . '-' . (int) $category->term_id; ?>">
@@ -117,7 +121,10 @@
 			<?php _e( 'Limit to Tag', 'arpw' ); ?>
 		</label>
 		<ul>
-			<?php foreach ( get_terms( 'post_tag' ) as $post_tag ) : ?>
+			<?php
+			$tag_args = array( 'number' => 99 );
+			$post_tags = get_terms( 'post_tag', apply_filters('arpw_get_tag_args', $tag_args ) );
+			foreach ( $post_tags as $post_tag ) : ?>
 				<li>
 					<input type="checkbox" value="<?php echo (int) $post_tag->term_id; ?>" id="<?php echo $this->get_field_id( 'tag' ) . '-' . (int) $post_tag->term_id; ?>" name="<?php echo $this->get_field_name( 'tag' ); ?>[]" <?php checked( is_array( $instance['tag'] ) && in_array( $post_tag->term_id, $instance['tag'] ) ); ?> />
 					<label for="<?php echo $this->get_field_id( 'tag' ) . '-' . (int) $post_tag->term_id; ?>">
